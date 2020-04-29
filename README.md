@@ -124,11 +124,23 @@ The `sshd_config` file harden the ssh server config. The notable changes are:
 - Only public key auth is enable
 - Only user thibault can login
 
+### Iptables
+
+- Reset iptables rules.
+- Configure iptables to allow established, local and ssh connections but drop everything else.
+- Save iptables rules.
+```
+source pifiles/iptables.sh
+```
+
 ### Fail2ban
 
 - Install / update fail2ban.
 - Create a soft link for local jail configuration.
 - Enable and restart the fail2ban service.
+```
+source pifiles/fail2ban/setup.sh
+```
 
 Fail2ban will scans the ssh log file and a client will be banned permanently if the following criteria are met:
 - 3 unsuccessfully attempts to log in
@@ -137,7 +149,6 @@ Fail2ban will scans the ssh log file and a client will be banned permanently if 
 ### Testing / Troubleshooting
 
 - Fail2ban
-
 ```
 # use the fail2ban client to manually ban an ip
 $ sudo fail2ban-client -vvv set sshd banip 192.0.2.0

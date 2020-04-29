@@ -1,5 +1,3 @@
-# Insert these at the beginning of an existing sshd_config file
-
 # supported HostKey algorithms by order of preference.
 HostKey /etc/ssh/ssh_host_ed25519_key
 HostKey /etc/ssh/ssh_host_rsa_key
@@ -11,54 +9,54 @@ Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.
 
 MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
 
-# protocol 1 is fundamentally broken
+# Protocol 1 is fundamentally broken.
 Protocol 2
 
-# don't let users set environment variables
+# Don't let users set environment variables.
 PermitUserEnvironment no
 
-# logs user's key fingerprint on login
+# Logs user's key fingerprint on login.
 LogLevel VERBOSE
 
-# 30 sec to login instead of 2min
+# 30 sec to login instead of 2min.
 LoginGraceTime 30s
 
-# disable root login
+# Disable root login.
 PermitRootLogin no
 
-# protects from misconfiguration
+# Protects from misconfiguration.
 StrictModes yes
 
-# allow public key authentication
+# Allow public key authentication.
 PubkeyAuthentication yes
 AuthorizedKeysFile	%h/.ssh/authorized_keys
 
-# enforce default
+# Enforce default.
 HostbasedAuthentication no
 IgnoreRhosts yes
 
-# disable tunneled clear text passwords
+# Disable tunneled clear text passwords.
 PasswordAuthentication no
 PermitEmptyPasswords no
 
-# disable s/key passwords
+# Disable s/key passwords.
 ChallengeResponseAuthentication no
 
-# enforce default
+# Enforce default.
 X11Forwarding no
 UseLogin no
 PermitTunnel no
 
-# disable pam auth
+# Disable pam auth.
 UsePAM no
 
-# dont allow agent and tcp forwarding
+# Don't allow agent and tcp forwarding.
 AllowAgentForwarding no
 AllowTcpForwarding no
 
-# ssh client to exit after 5 minutes of inactivity
+# SSH client to exit after 5 minutes of inactivity.
 ClientAliveInterval 300
 ClientAliveCountMax 0
 
-# only allow specific user
+# Only allow specific user.
 AllowUsers thibault
