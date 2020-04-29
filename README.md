@@ -110,7 +110,21 @@ source pifiles/apt.sh
 source pifiles/bash/setup.sh
 ```
 
-### Ressources
+### SSH
+
+- Update openssh-server.
+- Create a soft link for the `sshd_config` file.
+- Enable and restart the ssh service.
+```
+source pifiles/ssh/setup.sh
+```
+
+The `sshd_config` file, harden the ssh server config. The notable changes are:
+- Root login is disable
+- Only public key auth is enable
+- Only user thibault can login
+
+## Ressources
 
 - [Raspberry Pi Raspbian Documentation](https://www.raspberrypi.org/documentation/raspbian/)
 - [Securing your Raspberry Pi](https://www.raspberrypi.org/documentation/configuration/security.md)
@@ -118,7 +132,3 @@ source pifiles/bash/setup.sh
 - [Protect SSH with Fail2Ban](https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04#conclusion)
 - [How Fail2Ban Works](https://www.digitalocean.com/community/tutorials/how-fail2ban-works-to-protect-services-on-a-linux-server)
 - [WatchDog for Raspberry Pi](https://blog.kmp.or.at/watchdog-for-raspberry-pi/)
-
-<p align="center">
-  <img src="screen.png" width="60%">
-</p>

@@ -10,4 +10,7 @@ source "$DIR/apt.sh"
 # setup custom bash aliases
 source "$DIR/bash/setup.sh"
 
+# setup ssh
+source "$DIR/ssh/setup.sh"
+
 echo "all done."

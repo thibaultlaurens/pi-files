@@ -1,0 +1,64 @@
+# Insert these at the beginning of an existing sshd_config file
+
+# supported HostKey algorithms by order of preference.
+HostKey /etc/ssh/ssh_host_ed25519_key
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+
+KexAlgorithms curve25519-sha256@libssh.org,ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256
+
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
+
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,hmac-sha2-512,hmac-sha2-256,umac-128@openssh.com
+
+# protocol 1 is fundamentally broken
+Protocol 2
+
+# don't let users set environment variables
+PermitUserEnvironment no
+
+# logs user's key fingerprint on login
+LogLevel VERBOSE
+
+# 30 sec to login instead of 2min
+LoginGraceTime 30s
+
+# disable root login
+PermitRootLogin no
+
+# protects from misconfiguration
+StrictModes yes
+
+# allow public key authentication
+PubkeyAuthentication yes
+AuthorizedKeysFile	%h/.ssh/authorized_keys
+
+# enforce default
+HostbasedAuthentication no
+IgnoreRhosts yes
+
+# disable tunneled clear text passwords
+PasswordAuthentication no
+PermitEmptyPasswords no
+
+# disable s/key passwords
+ChallengeResponseAuthentication no
+
+# enforce default
+X11Forwarding no
+UseLogin no
+PermitTunnel no
+
+# disable pam auth
+UsePAM no
+
+# dont allow agent and tcp forwarding
+AllowAgentForwarding no
+AllowTcpForwarding no
+
+# ssh client to exit after 5 minutes of inactivity
+ClientAliveInterval 300
+ClientAliveCountMax 0
+
+# only allow specific user
+AllowUsers thibault
