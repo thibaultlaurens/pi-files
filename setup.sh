@@ -13,4 +13,7 @@ source "$DIR/bash/setup.sh"
 # setup ssh
 source "$DIR/ssh/setup.sh"
 
+# setup fail2ban
+source "$DIR/fail2ban/setup.sh"
+
 echo "all done."
