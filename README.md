@@ -2,10 +2,6 @@
 
 Configuration files and step by step guide to setup a [Raspbian](https://www.raspberrypi.org/documentation/raspbian/) Buster Lite (headless).
 
-<p align="center">
-  <img src="screen.png" width="60%">
-</p>
-
 ## Getting started
 
 - Enable ssh by adding an empty `ssh` file into the sd card:
@@ -113,3 +109,16 @@ source pifiles/apt.sh
 ```
 source pifiles/bash/setup.sh
 ```
+
+### Ressources
+
+- [Raspberry Pi Raspbian Documentation](https://www.raspberrypi.org/documentation/raspbian/)
+- [Securing your Raspberry Pi](https://www.raspberrypi.org/documentation/configuration/security.md)
+- [17 security tips for your Raspberry Pi](https://raspberrytips.com/security-tips-raspberry-pi)
+- [Protect SSH with Fail2Ban](https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04#conclusion)
+- [How Fail2Ban Works](https://www.digitalocean.com/community/tutorials/how-fail2ban-works-to-protect-services-on-a-linux-server)
+- [WatchDog for Raspberry Pi](https://blog.kmp.or.at/watchdog-for-raspberry-pi/)
+
+<p align="center">
+  <img src="screen.png" width="60%">
+</p>
