@@ -19,4 +19,7 @@ source "$DIR/iptables.sh"
 # setup fail2ban
 source "$DIR/fail2ban/setup.sh"
 
+# setup watchdog
+source "$DIR/watchdog/setup.sh"
+
 echo "all done."

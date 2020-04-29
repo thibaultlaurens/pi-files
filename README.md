@@ -144,7 +144,22 @@ source pifiles/fail2ban/setup.sh
 
 Fail2ban will scans the ssh log file and a client will be banned permanently if the following criteria are met:
 - 3 unsuccessfully attempts to log in
-- within a 10 minute window are detected in the logs
+- within a 10 minute window
+
+### Watchdog
+
+- Install / update watchdog.
+- Create a soft link for the watchdog config file.
+- Enable and restart the watchdog service.
+```
+source pifiles/watchdog/setup.sh
+```
+
+The watchdog daemon tells the kernel the system is working fine: it will periodically perform some checks and write to /dev/watchdog if they are successful. If it stops writing, the kernel will initiate a soft reboot.
+The watchdog config file enable these checks:
+- load 1 < 24
+- memory > 1 page
+- temperature < 80C
 
 ### Testing / Troubleshooting
 
@@ -158,6 +173,15 @@ $ sudo iptables -S
 
 # unban the test ip:
 $ sudo fail2ban-client -vvv set sshd unbanip 192.0.2.0
+```
+
+- Watchdog
+```
+# choose between a fork bomb:
+$ : (){ :|:& };:
+
+# or a system crash by a NULL pointer dereference:
+$ echo c > /proc/sysrq-trigger
 ```
 
 ## Ressources
