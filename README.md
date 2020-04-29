@@ -2,6 +2,10 @@
 
 Configuration files and step by step guide to setup a [Raspbian](https://www.raspberrypi.org/documentation/raspbian/) Buster Lite (headless).
 
+<p align="center">
+  <img src="screen.png" width="60%">
+</p>
+
 ## Getting started
 
 - Enable ssh by adding an empty `ssh` file into the sd card:
