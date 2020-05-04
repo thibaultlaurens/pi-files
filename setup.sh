@@ -1,25 +1,25 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 echo "setting up raspbian.."
 
-# install packages
+# Install packages.
 source "$DIR/apt.sh"
 
-# setup custom bash aliases
+# Setup custom bash aliases.
 source "$DIR/bash/setup.sh"
 
-# setup ssh
+# Setup ssh.
 source "$DIR/ssh/setup.sh"
 
-# setup firewall
+# Setup firewall.
 source "$DIR/iptables.sh"
 
-# setup fail2ban
+# Setup fail2ban.
 source "$DIR/fail2ban/setup.sh"
 
-# setup watchdog
+# Setup watchdog.
 source "$DIR/watchdog/setup.sh"
 
-echo "all done."
+echo "all done"

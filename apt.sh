@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 packages=(
     apt-transport-https
@@ -21,6 +21,7 @@ packages=(
     procps
     vim
     watchdog
+    wget
 )
 
 echo "installing packages.."

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Autocorrect typos in path names when using `cd`.
 shopt -s cdspell;
@@ -34,8 +34,11 @@ alias volts="sudo /opt/vc/bin/vcgencmd measure_volts"
 # Internal IP.
 alias myip="ip -4 addr | grep -oP '(?<=inet\s)\d+(\.\d+){3}'"
 
+# Quickly check the firewall rules chain.
+alias fw="sudo iptables -vL"
+
 # Quickly check the ssh jail.
-alias jail-sshd="sudo fail2ban-client status sshd"
+alias jail-ssh="sudo fail2ban-client status sshd"
 
 # List enabled services.
 alias systemctl-enabled="systemctl list-unit-files | grep enabled"
