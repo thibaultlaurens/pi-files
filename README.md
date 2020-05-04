@@ -1,6 +1,6 @@
-# pifiles
+# pi-files
 
-Configuration files and step by step guide to setup a Raspbian Buster Lite (headless).
+Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server.
 
 ## Getting started
 
@@ -91,14 +91,14 @@ scp -r pifiles thibault@pi:~
 
 - The following steps can be run independently or with a single command:
 ```
-source pifiles/setup.sh
+source setup.sh
 ```
 
 ### APT
 
 - Update, upgrade and install packages:
 ```
-source pifiles/apt.sh
+source apt.sh
 ```
 
 ### Bash
@@ -107,7 +107,7 @@ source pifiles/apt.sh
 - Create a soft link for custom bash aliases
 - Reload `~/.bashrc`
 ```
-source pifiles/bash/setup.sh
+source bash/setup.sh
 ```
 
 ### SSH
@@ -116,7 +116,7 @@ source pifiles/bash/setup.sh
 - Create a soft link for the `sshd_config` file.
 - Enable and restart the ssh service.
 ```
-source pifiles/ssh/setup.sh
+source ssh/setup.sh
 ```
 
 The `sshd_config` file harden the ssh server config. The notable changes are:
@@ -130,7 +130,7 @@ The `sshd_config` file harden the ssh server config. The notable changes are:
 - Configure iptables to allow established, local and ssh connections but drop everything else.
 - Save iptables rules.
 ```
-source pifiles/iptables.sh
+source iptables.sh
 ```
 
 ### Fail2ban
@@ -139,7 +139,7 @@ source pifiles/iptables.sh
 - Create a soft link for local jail configuration.
 - Enable and restart the fail2ban service.
 ```
-source pifiles/fail2ban/setup.sh
+source fail2ban/setup.sh
 ```
 
 Fail2ban will scans the ssh log file and a client will be banned permanently if the following criteria are met:
@@ -152,7 +152,7 @@ Fail2ban will scans the ssh log file and a client will be banned permanently if 
 - Create a soft link for the watchdog config file.
 - Enable and restart the watchdog service.
 ```
-source pifiles/watchdog/setup.sh
+source watchdog/setup.sh
 ```
 
 The watchdog daemon tells the kernel the system is working fine: it will periodically perform some checks and write to /dev/watchdog if they are successful. If it stops writing, the kernel will initiate a soft reboot.
@@ -183,6 +183,25 @@ $ : (){ :|:& };:
 # or a system crash by a NULL pointer dereference:
 $ echo c > /proc/sysrq-trigger
 ```
+
+## Pi-hole
+
+- Setup firewall rules.
+- Download pi-hole install script.
+- Run the installer.
+```
+source piholes/setup.sh
+```
+
+The pi-hole install script will:
+- clone the pi-hole repo in `/etc/.pihole`
+- clone the admin interface repo in `/var/www/html/admin`
+- create a pihole user
+
+Post install:
+- change the web interface’s password `pihole -a -p`
+- check the install logs at `/etc/pihole/install.log`
+- check the [post-install](https://docs.pi-hole.net/main/post-install/) page for DHCP instructions.
 
 ## Ressources
 
