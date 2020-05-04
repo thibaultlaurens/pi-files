@@ -1,6 +1,6 @@
 # pi-files
 
-Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server.
+Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server and optionally tun it into a [pi-hole](https://pi-hole.net/).
 
 ## Getting started
 
@@ -61,9 +61,11 @@ $ sudo deluser -remove-home pi
 $ sudo rm /etc/sudoers.d/010_pi-nopasswd
 ```
 
-## Dotfiles
+## Server setup
 
-- Before using these files, on the client:
+### Client side
+
+- Generate and install SSH keys:
 ```
 # generate ssh key pair, use Ed25519 algorithm
 $ ssh-keygen -t ed25519 -o -a 100
@@ -192,11 +194,6 @@ $ echo c > /proc/sysrq-trigger
 ```
 source piholes/setup.sh
 ```
-
-The pi-hole install script will:
-- clone the pi-hole repo in `/etc/.pihole`
-- clone the admin interface repo in `/var/www/html/admin`
-- create a pihole user
 
 Post install:
 - change the web interface’s password `pihole -a -p`
