@@ -1,6 +1,6 @@
 # pi-files
 
-Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server and optionally tun it into a [pi-hole](https://pi-hole.net/).
+Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server and optionally turn it into a [pi-hole](https://pi-hole.net/).
 
 ## Getting started
 
