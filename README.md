@@ -1,6 +1,6 @@
 # pi-files
 
-Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server and optionally turn it into a [pi-hole](https://pi-hole.net/).
+Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server and optionally turn it into a [DNS sinkhole](https://en.wikipedia.org/wiki/DNS_sinkhole) (pi-hole) and a recursive [DNS server](https://github.com/NLnetLabs/unbound) (unbound).
 
 ## Getting started
 
@@ -188,6 +188,8 @@ $ echo c > /proc/sysrq-trigger
 
 ## Pi-hole
 
+[Pi-hole](https://pi-hole.net/) is "a DNS sinkhole that protects your devices from unwanted content, without installing any client-side software".
+
 - Setup firewall rules.
 - Download pi-hole install script.
 - Run the installer.
@@ -196,9 +198,30 @@ source piholes/setup.sh
 ```
 
 Post install:
-- change the web interface’s password `pihole -a -p`
-- check the install logs at `/etc/pihole/install.log`
-- check the [post-install](https://docs.pi-hole.net/main/post-install/) page for DHCP instructions.
+- Change the web interface’s password `pihole -a -p`
+- Check the install logs at `/etc/pihole/install.log`
+- Check the [post-install](https://docs.pi-hole.net/main/post-install/) page for DHCP instructions.
+
+## Unbound
+
+[Unbound](https://github.com/NLnetLabs/unbound) is "a validating, recursive, and caching open source DNS resolver".
+
+- Install unbound.
+- Download the root hint files.
+- Configure Unbound.
+```
+source unbound/setup.sh
+```
+
+Testing:
+```
+dig tlaurens.xyz @127.0.0.1 -p 5335
+```
+
+Finally, configure Pi-hole to use the recursive DNS server by specifying `127.0.0.1#5335` as the Custom DNS (IPv4).
+
+Note: it is recommended to update the root hint files roughly every six months since it changes infrequently.
+
 
 ## Ressources
 
@@ -208,3 +231,4 @@ Post install:
 - [Protect SSH with Fail2Ban](https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04#conclusion)
 - [How Fail2Ban Works](https://www.digitalocean.com/community/tutorials/how-fail2ban-works-to-protect-services-on-a-linux-server)
 - [WatchDog for Raspberry Pi](https://blog.kmp.or.at/watchdog-for-raspberry-pi/)
+- [Pi-hole as All-Around DNS Solution](https://docs.pi-hole.net/guides/unbound/)
