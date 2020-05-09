@@ -1,0 +1,17 @@
+// Enable the update/upgrade script
+APT::Periodic::Enable "1";
+
+// Run "apt-get update" every day
+APT::Periodic::Update-Package-Lists "1";
+
+// Disable "apt-get upgrade --download-only"
+APT::Periodic::Download-Upgradeable-Packages "0";
+
+// Run "unattended-upgrade" security upgrade script every day
+APT::Periodic::Unattended-Upgrade "1";
+
+// Run "apt-get autoclean" every 21 days
+APT::Periodic::AutocleanInterval "21";
+
+// Run "apt-get clean" every 7 days
+APT::Periodic::AutocleanInterval "7";

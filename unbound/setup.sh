@@ -3,7 +3,7 @@
 DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 echo "installing unbound.."
-sudo apt install unbound
+sudo apt update && sudo apt install unbound
 
 # Download the list of primary root servers
 echo "downloading the root hints file.."

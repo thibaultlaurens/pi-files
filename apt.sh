@@ -19,6 +19,7 @@ packages=(
     openssl
     openssh-server
     procps
+    unattended-upgrades
     vim
     watchdog
     wget

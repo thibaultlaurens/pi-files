@@ -106,8 +106,8 @@ source apt.sh
 ### Bash
 
 - Install / update bash and bash-completion.
-- Create a soft link for custom bash aliases
-- Reload `~/.bashrc`
+- Create a soft link for custom bash aliases.
+- Reload `~/.bashrc`.
 ```
 source bash/setup.sh
 ```
@@ -133,6 +133,15 @@ The `sshd_config` file harden the ssh server config. The notable changes are:
 - Save iptables rules.
 ```
 source iptables.sh
+```
+
+### Unattended upgrades
+
+- Install unattended-upgrades.
+- Configure daily upgrades origins.
+- Enable and reload unattended-upgrades service.
+```
+source upgrades/setup.sh
 ```
 
 ### Fail2ban
@@ -164,6 +173,12 @@ The watchdog config file enable these checks:
 - temperature < 80C
 
 ### Testing / Troubleshooting
+
+- Unattended-upgrades
+```
+# dry run
+sudo unattended-upgrade -d -v --dry-run
+```
 
 - Fail2ban
 ```
