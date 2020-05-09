@@ -1,6 +1,6 @@
 # pi-files
 
-Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server and optionally turn it into a [DNS sinkhole](https://en.wikipedia.org/wiki/DNS_sinkhole) (pi-hole) and a recursive [DNS server](https://github.com/NLnetLabs/unbound) (unbound).
+Configuration files and step by step guide to setup a Raspbian Buster Lite (headless) server and optionally turn it into a [DNS sinkhole](https://en.wikipedia.org/wiki/DNS_sinkhole) (pi-hole) and a recursive DNS server (unbound).
 
 ## Getting started
 
@@ -215,7 +215,8 @@ source unbound/setup.sh
 
 Testing:
 ```
-dig tlaurens.xyz @127.0.0.1 -p 5335
+# ask for the DNSSEC signature as well
+dig tlaurens.xyz @127.0.0.1 -p 5335 +dnssec
 ```
 
 Finally, configure Pi-hole to use the recursive DNS server by specifying `127.0.0.1#5335` as the Custom DNS (IPv4).
