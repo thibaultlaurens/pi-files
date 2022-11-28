@@ -59,4 +59,4 @@ ClientAliveInterval 300
 ClientAliveCountMax 0
 
 # Only allow specific user.
-AllowUsers thibault
+AllowUsers tlaurens
